@@ -12,7 +12,9 @@
 		scores: Record<string, number>;
 	} = $props();
 
-	let localScores = $state({ ...initialScores });
+	// Intentionally captures initial value only — local state manages optimistic updates
+	const seedScores = initialScores;
+	let localScores = $state({ ...seedScores });
 	let pending = $state(new Set<string>());
 	let errorMsg = $state<string | null>(null);
 
