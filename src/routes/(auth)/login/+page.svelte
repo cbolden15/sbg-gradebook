@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { ActionData } from './$types';
-	let { form }: { form: ActionData } = $props();
+	import type { ActionData, PageData } from './$types';
+	let { form, data }: { form: ActionData; data: PageData } = $props();
 </script>
 
 <div class="min-h-screen flex items-center justify-center bg-[#f4f6f8]">
@@ -13,6 +13,9 @@
 			<h1 class="text-xl font-bold text-[#1a2332] mb-1">Sign in</h1>
 			<p class="text-sm text-[#8a9ab0] mb-6">Welcome back</p>
 
+			{#if data?.message === 'confirm-email'}
+				<p class="mb-4 text-sm text-[#3a5070] bg-[#e8f0f8] border border-[#b0cce8] rounded-lg px-4 py-3">Account created! Check your email to confirm your address, then sign in.</p>
+			{/if}
 			{#if form?.error}
 				<p class="mb-4 text-sm text-[#4a6080] bg-[#e8eef4] border border-[#c0ccd8] rounded-lg px-4 py-3">{form.error}</p>
 			{/if}

@@ -18,6 +18,7 @@ export const actions: Actions = {
 
 		if (error) return fail(400, { error: error.message });
 
-		redirect(303, '/dashboard');
+		// If email confirmation is required, send to login with a message
+		redirect(303, '/login?message=confirm-email');
 	}
 };
