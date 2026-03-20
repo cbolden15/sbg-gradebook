@@ -1,9 +1,9 @@
 export const SCORE_COLORS: Record<number | 'null', string> = {
-	1: 'bg-red-100 text-red-900 border-red-200',
-	2: 'bg-orange-100 text-orange-900 border-orange-200',
-	3: 'bg-yellow-100 text-yellow-900 border-yellow-200',
-	4: 'bg-green-100 text-green-900 border-green-200',
-	null: 'bg-gray-50 text-gray-400 border-gray-100'
+	1: 'score-1',
+	2: 'score-2',
+	3: 'score-3',
+	4: 'score-4',
+	null: 'score-null'
 };
 
 export const SCORE_LABELS: Record<number, string> = {

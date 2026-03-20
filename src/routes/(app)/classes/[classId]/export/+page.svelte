@@ -7,13 +7,13 @@
 
 <div class="max-w-2xl">
 	<div class="mb-6">
-		<a href="/classes/{data.cls.id}" class="text-sm text-gray-400 hover:text-gray-600">← {data.cls.name}</a>
-		<h1 class="text-xl font-bold text-gray-900 mt-2">Grade Export</h1>
-		<p class="text-sm text-gray-500">Copy computed grades to paste into your official gradebook.</p>
+		<a href="/classes/{data.cls.id}" class="text-xs font-medium uppercase tracking-wide text-[#8a9ab0] hover:text-[#4a6080] transition-colors">← {data.cls.name}</a>
+		<h1 class="text-lg font-bold text-[#1a2332] mt-2">Grade Export</h1>
+		<p class="text-sm text-[#4a6080]">Copy computed grades to paste into your official gradebook.</p>
 	</div>
 
-	<div class="mb-4 p-4 bg-blue-50 border border-blue-100 rounded-xl text-sm text-blue-800">
-		<strong>How grades are computed:</strong> Each student's average mastery level across all standards
+	<div class="mb-4 p-4 bg-[#e8eef4] border border-[#c0ccd8] rounded-xl text-sm text-[#3a5070]">
+		<strong class="text-[#1a2332]">How grades are computed:</strong> Each student's average mastery level across all standards
 		is translated to a percentage. Click "Copy for gradebook" to copy a tab-separated table.
 	</div>
 

@@ -1,1 +1,39 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@layer base {
+	*, *::before, *::after { box-sizing: border-box; }
+	body {
+		font-family: 'Inter', system-ui, sans-serif;
+		background-color: #f4f6f8;
+		color: #1a2332;
+		-webkit-font-smoothing: antialiased;
+	}
+}
+
+/* Silver Grade — Score cells */
+.score-4 {
+	background: linear-gradient(135deg, #1a3a5c, #0f2840);
+	color: #b0d0f0;
+	border-color: #0a1e30;
+}
+.score-3 {
+	background: #d0dce8;
+	color: #3a5070;
+	border-color: #c0ccd8;
+}
+.score-2 {
+	background: #f0f4f8;
+	color: #b0c0d0;
+	border-color: #e0e8f0;
+}
+.score-1 {
+	background: #e8eef4;
+	color: #8a9ab0;
+	border-color: #d8e4f0;
+}
+.score-null {
+	background: #f4f6f8;
+	color: #c0ccd8;
+	border-color: #dde3ea;
+}

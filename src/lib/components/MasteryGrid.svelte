@@ -49,46 +49,46 @@
 </script>
 
 {#if errorMsg}
-	<div class="mb-4 px-4 py-3 bg-red-50 border border-red-100 rounded-lg text-sm text-red-600">
+	<div class="mb-4 px-4 py-3 bg-[#e8eef4] border border-[#c0ccd8] rounded-lg text-sm text-[#3a5070]">
 		{errorMsg}
 	</div>
 {/if}
 
 {#if students.length === 0 || standards.length === 0}
-	<div class="py-12 text-center bg-white rounded-xl border border-dashed border-gray-300">
-		<p class="text-gray-500 text-sm mb-2">
+	<div class="py-12 text-center bg-white rounded-xl border border-dashed border-[#c0ccd8]">
+		<p class="text-[#8a9ab0] text-sm mb-2">
 			{#if students.length === 0}Add students first.{:else}Add standards first.{/if}
 		</p>
-		<div class="flex justify-center gap-3 mt-3">
-			<a href="students" class="text-sm text-blue-600 hover:underline">Add students</a>
-			<a href="standards" class="text-sm text-blue-600 hover:underline">Add standards</a>
+		<div class="flex justify-center gap-4 mt-3">
+			<a href="students" class="text-sm text-[#1a3a5c] font-medium hover:underline">Add students</a>
+			<a href="standards" class="text-sm text-[#1a3a5c] font-medium hover:underline">Add standards</a>
 		</div>
 	</div>
 {:else}
-	<div class="overflow-x-auto rounded-xl border border-gray-200">
+	<div class="overflow-x-auto rounded-xl border border-[#dde3ea]">
 		<table class="w-full border-collapse bg-white text-sm">
 			<thead>
-				<tr class="bg-gray-50 border-b border-gray-200">
+				<tr class="bg-[#f4f6f8] border-b border-[#dde3ea]">
 					<th
-						class="text-left px-4 py-3 font-medium text-gray-600 min-w-32 sticky left-0 bg-gray-50"
+						class="text-left px-4 py-3 text-xs font-semibold uppercase tracking-wide text-[#4a6080] min-w-32 sticky left-0 bg-[#f4f6f8]"
 					>Student</th>
 					{#each standards as std}
 						<th
-							class="px-2 py-3 font-medium text-gray-600 max-w-24 text-center"
+							class="px-2 py-3 text-xs font-semibold uppercase tracking-wide text-[#4a6080] max-w-24 text-center"
 							title={std.description ?? ''}
 						>
-							<span class="block truncate text-xs">{std.name}</span>
+							<span class="block truncate">{std.name}</span>
 						</th>
 					{/each}
 				</tr>
 			</thead>
-			<tbody class="divide-y divide-gray-100">
+			<tbody class="divide-y divide-[#f0f4f8]">
 				{#each students as student}
-					<tr class="hover:bg-gray-50">
+					<tr class="hover:bg-[#f8fafc]">
 						<td
-							class="px-4 py-2 font-medium text-gray-900 sticky left-0 bg-white border-r border-gray-100"
+							class="px-4 py-2 font-medium text-[#1a2332] sticky left-0 bg-white border-r border-[#f0f4f8]"
 						>
-							<a href="students/{student.id}" class="hover:text-blue-600">{student.name}</a>
+							<a href="students/{student.id}" class="hover:text-[#1a3a5c] transition-colors">{student.name}</a>
 						</td>
 						{#each standards as std}
 							{@const key = `${student.id}_${std.id}`}

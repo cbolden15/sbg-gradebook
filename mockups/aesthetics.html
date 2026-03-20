@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SBG Gradebook — 20 Aesthetic Approaches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Libre+Baskerville:wght@400;700&family=Syne:wght@400;600;700;800&family=Cabinet+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0a;
+    font-family: 'DM Sans', sans-serif;
+    color: #fff;
+    min-height: 100vh;
+    padding: 48px 32px;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .page-header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .page-header p {
+    color: #666;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 24px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .aesthetic-card {
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+  }
+  .aesthetic-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.5);
+  }
+
+  .card-label {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    z-index: 10;
+  }
+
+  .card-number {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: rgba(255,255,255,0.3);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    z-index: 10;
+  }
+
+  /* ============================================================
+     AESTHETIC PREVIEWS
+     Each .preview is a 400x280px mini-dashboard
+  ============================================================ */
+
+  .preview {
+    height: 280px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Shared mini-component styles */
+  .mini-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  .mini-nav-logo {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .mini-nav-links {
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+    opacity: 0.5;
+  }
+  .mini-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .mini-subtitle {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.45;
+  }
+  .mini-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    margin-top: auto;
+  }
+  .mini-cell {
+    height: 28px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .mini-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .mini-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .mini-name {
+    font-size: 11px;
+    font-weight: 500;
+    flex: 1;
+  }
+  .mini-badge {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+  }
+  .mini-bar {
+    height: 3px;
+    border-radius: 2px;
+    margin-top: 2px;
+  }
+  .mini-stats {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .mini-stat {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .mini-stat-label {
+    font-size: 9px;
+    opacity: 0.45;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+  }
+  .mini-divider {
+    height: 1px;
+    opacity: 0.08;
+  }
+
+  /* ================================================================
+     01. OBSIDIAN GOLD — Deep luxury, gold accents
+  ================================================================ */
+  .p01 {
+    background: #0d0d0d;
+    color: #e8e4dc;
+    font-family: 'DM Sans', sans-serif;
+    border: 1px solid #1a1a1a;
+  }
+  .p01 .mini-nav-logo { color: #c9a84c; letter-spacing: 0.04em; font-size: 12px; text-transform: uppercase; }
+  .p01 .mini-title { font-family: 'DM Serif Display', serif; font-weight: 400; color: #e8e4dc; font-size: 20px; }
+  .p01 .mini-subtitle { color: #666; }
+  .p01 .mini-cell { background: #1a1a1a; color: #444; }
+  .p01 .mini-cell.c4 { background: linear-gradient(135deg, #c9a84c, #a07030); color: #000; }
+  .p01 .mini-cell.c3 { background: #1e1a14; color: #c9a84c; border: 1px solid #332a18; }
+  .p01 .mini-cell.c2 { background: #161614; color: #5a5040; }
+  .p01 .mini-avatar { background: linear-gradient(135deg, #c9a84c22, #c9a84c44); border: 1px solid #c9a84c33; }
+  .p01 .mini-badge { background: #c9a84c20; color: #c9a84c; border: 1px solid #c9a84c30; }
+  .p01 .mini-bar { background: linear-gradient(90deg, #c9a84c, #a07030); }
+  .p01 .mini-bar-bg { background: #1a1a1a; }
+  .p01 .mini-divider { background: #ffffff; }
+  .p01 .mini-stat { color: #c9a84c; }
+
+  /* ================================================================
+     02. ARCTIC AUTHORITY — Pure white, navy depth, surgical precision
+  ================================================================ */
+  .p02 {
+    background: #ffffff;
+    color: #0f172a;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #e2e8f0;
+  }
+  .p02 .mini-nav-logo { color: #0f172a; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
+  .p02 .mini-title { font-weight: 700; color: #0f172a; font-size: 17px; }
+  .p02 .mini-subtitle { color: #94a3b8; }
+  .p02 .mini-cell { background: #f1f5f9; color: #94a3b8; }
+  .p02 .mini-cell.c4 { background: #0f172a; color: #fff; }
+  .p02 .mini-cell.c3 { background: #e2e8f0; color: #0f172a; }
+  .p02 .mini-cell.c2 { background: #f8fafc; color: #cbd5e1; border: 1px solid #e2e8f0; }
+  .p02 .mini-avatar { background: #e2e8f0; }
+  .p02 .mini-badge { background: #0f172a; color: #fff; }
+  .p02 .mini-bar { background: #0f172a; }
+  .p02 .mini-bar-bg { background: #e2e8f0; }
+  .p02 .mini-divider { background: #000; }
+  .p02 .mini-stat { color: #0f172a; }
+
+  /* ================================================================
+     03. SAPPHIRE TRUST — Cobalt blue, professional authority
+  ================================================================ */
+  .p03 {
+    background: #0a1628;
+    color: #e2eaf8;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #0f2040;
+  }
+  .p03 .mini-nav-logo { color: #6ba3f5; letter-spacing: 0.02em; font-size: 12px; font-weight: 600; }
+  .p03 .mini-title { font-weight: 700; color: #e2eaf8; font-size: 17px; }
+  .p03 .mini-subtitle { color: #3d5a8a; }
+  .p03 .mini-cell { background: #0f2040; color: #2a4a7a; }
+  .p03 .mini-cell.c4 { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; }
+  .p03 .mini-cell.c3 { background: #1a3060; color: #6ba3f5; border: 1px solid #1e3a70; }
+  .p03 .mini-cell.c2 { background: #0c1a30; color: #1e3a70; }
+  .p03 .mini-avatar { background: linear-gradient(135deg, #2563eb33, #2563eb55); border: 1px solid #2563eb33; }
+  .p03 .mini-badge { background: #2563eb25; color: #6ba3f5; border: 1px solid #2563eb35; }
+  .p03 .mini-bar { background: linear-gradient(90deg, #2563eb, #6ba3f5); }
+  .p03 .mini-bar-bg { background: #0f2040; }
+  .p03 .mini-divider { background: #fff; }
+  .p03 .mini-stat { color: #6ba3f5; }
+
+  /* ================================================================
+     04. WARM IVORY — Cream off-white, old money feel, serif elegance
+  ================================================================ */
+  .p04 {
+    background: #faf7f0;
+    color: #2c1810;
+    font-family: 'Playfair Display', serif;
+    border: 1px solid #e8dfd0;
+  }
+  .p04 .mini-nav-logo { color: #2c1810; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Inter', sans-serif; font-weight: 600; }
+  .p04 .mini-title { font-weight: 700; color: #2c1810; font-size: 19px; font-style: italic; }
+  .p04 .mini-subtitle { color: #9a8070; font-family: 'Inter', sans-serif; }
+  .p04 .mini-cell { background: #f0e8d8; color: #c0a880; }
+  .p04 .mini-cell.c4 { background: #2c1810; color: #faf7f0; }
+  .p04 .mini-cell.c3 { background: #e8dfd0; color: #6a5040; border: 1px solid #d8cfc0; }
+  .p04 .mini-cell.c2 { background: #f5f0e8; color: #c8b898; }
+  .p04 .mini-avatar { background: #e8dfd0; border: 1px solid #d0c8b8; }
+  .p04 .mini-badge { background: #2c1810; color: #faf7f0; font-family: 'Inter', sans-serif; }
+  .p04 .mini-bar { background: #2c1810; }
+  .p04 .mini-bar-bg { background: #e8dfd0; }
+  .p04 .mini-divider { background: #000; }
+  .p04 .mini-stat { color: #2c1810; font-family: 'Inter', sans-serif; font-weight: 800; }
+
+  /* ================================================================
+     05. SLATE GLASS — Frosted glass cards on slate
+  ================================================================ */
+  .p05 {
+    background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #334155;
+    position: relative;
+  }
+  .p05::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, #3b82f633 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .p05 .mini-nav-logo { color: #94a3b8; font-size: 11px; letter-spacing: 0.06em; font-weight: 600; }
+  .p05 .mini-title { font-weight: 700; color: #f1f5f9; }
+  .p05 .mini-subtitle { color: #475569; }
+  .p05 .mini-cell {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(8px);
+    color: #475569;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .p05 .mini-cell.c4 { background: rgba(59,130,246,0.3); color: #bfdbfe; border-color: rgba(59,130,246,0.4); }
+  .p05 .mini-cell.c3 { background: rgba(255,255,255,0.08); color: #94a3b8; border-color: rgba(255,255,255,0.1); }
+  .p05 .mini-cell.c2 { background: rgba(255,255,255,0.03); color: #334155; }
+  .p05 .mini-avatar { background: rgba(59,130,246,0.2); border: 1px solid rgba(59,130,246,0.3); }
+  .p05 .mini-badge { background: rgba(59,130,246,0.2); color: #93c5fd; border: 1px solid rgba(59,130,246,0.3); }
+  .p05 .mini-bar { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+  .p05 .mini-bar-bg { background: rgba(255,255,255,0.06); }
+  .p05 .mini-divider { background: #fff; }
+  .p05 .mini-stat { color: #93c5fd; }
+
+  /* ================================================================
+     06. EDITORIAL BLACK — Fashion magazine, bold type, minimal chrome
+  ================================================================ */
+  .p06 {
+    background: #000000;
+    color: #ffffff;
+    font-family: 'DM Serif Display', serif;
+    border: 1px solid #111;
+  }
+  .p06 .mini-nav-logo { color: #fff; font-size: 14px; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; }
+  .p06 .mini-title { font-size: 26px; font-weight: 400; color: #fff; line-height: 1; letter-spacing: -0.02em; font-style: italic; }
+  .p06 .mini-subtitle { color: #444; font-family: 'Inter', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.15em; }
+  .p06 .mini-cell { background: #111; color: #333; border-radius: 2px; }
+  .p06 .mini-cell.c4 { background: #fff; color: #000; }
+  .p06 .mini-cell.c3 { background: #1a1a1a; color: #666; border: 1px solid #222; }
+  .p06 .mini-cell.c2 { background: #0a0a0a; color: #222; }
+  .p06 .mini-avatar { background: #222; border-radius: 2px; }
+  .p06 .mini-badge { background: #fff; color: #000; border-radius: 2px; letter-spacing: 0.08em; font-family: 'Inter', sans-serif; }
+  .p06 .mini-bar { background: #fff; }
+  .p06 .mini-bar-bg { background: #1a1a1a; }
+  .p06 .mini-divider { background: #fff; opacity: 0.12 !important; }
+  .p06 .mini-stat { color: #fff; font-family: 'DM Serif Display', serif; font-style: italic; font-weight: 400; }
+
+  /* ================================================================
+     07. FOREST AUTHORITY — Dark evergreen + cream + gold, executive
+  ================================================================ */
+  .p07 {
+    background: #0d1a0e;
+    color: #d4e6d0;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #162018;
+  }
+  .p07 .mini-nav-logo { color: #8fbe8a; font-size: 11px; letter-spacing: 0.06em; font-weight: 600; text-transform: uppercase; }
+  .p07 .mini-title { font-weight: 700; color: #d4e6d0; font-size: 17px; }
+  .p07 .mini-subtitle { color: #3a5a38; }
+  .p07 .mini-cell { background: #162018; color: #2a3a28; }
+  .p07 .mini-cell.c4 { background: linear-gradient(135deg, #2d6a2d, #1e4a1e); color: #a0d4a0; }
+  .p07 .mini-cell.c3 { background: #1e3020; color: #5a9058; border: 1px solid #243828; }
+  .p07 .mini-cell.c2 { background: #101810; color: #1e2e1e; }
+  .p07 .mini-avatar { background: rgba(143,190,138,0.15); border: 1px solid rgba(143,190,138,0.2); }
+  .p07 .mini-badge { background: rgba(143,190,138,0.15); color: #8fbe8a; border: 1px solid rgba(143,190,138,0.2); }
+  .p07 .mini-bar { background: linear-gradient(90deg, #2d6a2d, #8fbe8a); }
+  .p07 .mini-bar-bg { background: #162018; }
+  .p07 .mini-divider { background: #fff; }
+  .p07 .mini-stat { color: #8fbe8a; }
+
+  /* ================================================================
+     08. CHALK & INK — Off-white chalkboard, tactile, confident
+  ================================================================ */
+  .p08 {
+    background: #f4f0e8;
+    color: #1a1410;
+    font-family: 'Space Grotesk', sans-serif;
+    border: 1px solid #e0d8c8;
+  }
+  .p08 .mini-nav-logo { color: #1a1410; font-size: 12px; font-weight: 700; letter-spacing: -0.01em; }
+  .p08 .mini-title { font-weight: 700; color: #1a1410; font-size: 18px; letter-spacing: -0.03em; }
+  .p08 .mini-subtitle { color: #8a8070; font-size: 10px; }
+  .p08 .mini-cell { background: #e8e0d0; color: #a09080; }
+  .p08 .mini-cell.c4 { background: #1a1410; color: #f4f0e8; }
+  .p08 .mini-cell.c3 { background: #d8d0c0; color: #4a4030; border: 1px solid #c8c0b0; }
+  .p08 .mini-cell.c2 { background: #ece8e0; color: #c0b8a8; }
+  .p08 .mini-avatar { background: #e0d8c8; border: 1px solid #c8c0b0; }
+  .p08 .mini-badge { background: #1a1410; color: #f4f0e8; }
+  .p08 .mini-bar { background: #1a1410; }
+  .p08 .mini-bar-bg { background: #e0d8c8; }
+  .p08 .mini-divider { background: #000; }
+  .p08 .mini-stat { color: #1a1410; }
+
+  /* ================================================================
+     09. ROYAL MIDNIGHT — Deep indigo-purple, silver, sovereign
+  ================================================================ */
+  .p09 {
+    background: #0a0a1a;
+    color: #d0cce8;
+    font-family: 'DM Sans', sans-serif;
+    border: 1px solid #14143a;
+    position: relative;
+  }
+  .p09::before {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, #7c3aed15 0%, transparent 70%);
+  }
+  .p09 .mini-nav-logo { color: #a78bfa; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; }
+  .p09 .mini-title { font-family: 'DM Serif Display', serif; font-weight: 400; color: #e0dcf4; font-size: 19px; }
+  .p09 .mini-subtitle { color: #3d3560; }
+  .p09 .mini-cell { background: #12122a; color: #2a2450; }
+  .p09 .mini-cell.c4 { background: linear-gradient(135deg, #7c3aed, #5b21b6); color: #ede9fe; }
+  .p09 .mini-cell.c3 { background: #1e1c40; color: #a78bfa; border: 1px solid #2a2850; }
+  .p09 .mini-cell.c2 { background: #0c0c1e; color: #1a1838; }
+  .p09 .mini-avatar { background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.2); }
+  .p09 .mini-badge { background: rgba(167,139,250,0.15); color: #a78bfa; border: 1px solid rgba(167,139,250,0.25); }
+  .p09 .mini-bar { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+  .p09 .mini-bar-bg { background: #14143a; }
+  .p09 .mini-divider { background: #fff; }
+  .p09 .mini-stat { color: #a78bfa; }
+
+  /* ================================================================
+     10. COPPER & CONCRETE — Industrial refined, warm metal on grey
+  ================================================================ */
+  .p10 {
+    background: #1a1814;
+    color: #d8c8b0;
+    font-family: 'Space Grotesk', sans-serif;
+    border: 1px solid #282420;
+  }
+  .p10 .mini-nav-logo { color: #b87333; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .p10 .mini-title { font-weight: 700; color: #e8d8c0; font-size: 17px; letter-spacing: -0.02em; }
+  .p10 .mini-subtitle { color: #5a5040; }
+  .p10 .mini-cell { background: #242018; color: #3a3028; }
+  .p10 .mini-cell.c4 { background: linear-gradient(135deg, #b87333, #8a5522); color: #fce8d0; }
+  .p10 .mini-cell.c3 { background: #2e2820; color: #b87333; border: 1px solid #3a3028; }
+  .p10 .mini-cell.c2 { background: #161410; color: #2a2418; }
+  .p10 .mini-avatar { background: rgba(184,115,51,0.15); border: 1px solid rgba(184,115,51,0.2); }
+  .p10 .mini-badge { background: rgba(184,115,51,0.15); color: #b87333; border: 1px solid rgba(184,115,51,0.25); }
+  .p10 .mini-bar { background: linear-gradient(90deg, #b87333, #d4954d); }
+  .p10 .mini-bar-bg { background: #242018; }
+  .p10 .mini-divider { background: #fff; }
+  .p10 .mini-stat { color: #b87333; }
+
+  /* ================================================================
+     11. CLOUD SUMMIT — Pure white, surgical clarity, crisp depth
+  ================================================================ */
+  .p11 {
+    background: #f8fafc;
+    color: #0f172a;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #e2e8f0;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8);
+  }
+  .p11 .mini-nav-logo { color: #64748b; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+  .p11 .mini-title { font-weight: 700; color: #0f172a; font-size: 16px; }
+  .p11 .mini-subtitle { color: #94a3b8; }
+  .p11 .mini-cell { background: #fff; color: #94a3b8; box-shadow: 0 1px 3px rgba(0,0,0,0.08); border: 1px solid #f1f5f9; }
+  .p11 .mini-cell.c4 { background: #0f172a; color: #fff; box-shadow: 0 4px 8px rgba(15,23,42,0.3); border-color: transparent; }
+  .p11 .mini-cell.c3 { background: #e2e8f0; color: #475569; border-color: #cbd5e1; box-shadow: none; }
+  .p11 .mini-cell.c2 { background: #f8fafc; color: #cbd5e1; }
+  .p11 .mini-avatar { background: #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .p11 .mini-badge { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+  .p11 .mini-bar { background: #0f172a; }
+  .p11 .mini-bar-bg { background: #e2e8f0; }
+  .p11 .mini-divider { background: #000; }
+  .p11 .mini-stat { color: #0f172a; }
+
+  /* ================================================================
+     12. TEAL AUTHORITY — Dark teal, institutional trust, cool
+  ================================================================ */
+  .p12 {
+    background: #061a1a;
+    color: #b0d4d4;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #0a2828;
+  }
+  .p12 .mini-nav-logo { color: #4db8b8; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; }
+  .p12 .mini-title { font-weight: 700; color: #d0eaea; font-size: 17px; }
+  .p12 .mini-subtitle { color: #1e4a4a; }
+  .p12 .mini-cell { background: #0a2828; color: #1e4a4a; }
+  .p12 .mini-cell.c4 { background: linear-gradient(135deg, #0d9488, #0a7a72); color: #ccfbf1; }
+  .p12 .mini-cell.c3 { background: #0f3838; color: #4db8b8; border: 1px solid #1a4848; }
+  .p12 .mini-cell.c2 { background: #061414; color: #0a2828; }
+  .p12 .mini-avatar { background: rgba(77,184,184,0.15); border: 1px solid rgba(77,184,184,0.2); }
+  .p12 .mini-badge { background: rgba(77,184,184,0.15); color: #4db8b8; border: 1px solid rgba(77,184,184,0.25); }
+  .p12 .mini-bar { background: linear-gradient(90deg, #0d9488, #4db8b8); }
+  .p12 .mini-bar-bg { background: #0a2828; }
+  .p12 .mini-divider { background: #fff; }
+  .p12 .mini-stat { color: #4db8b8; }
+
+  /* ================================================================
+     13. MONUMENT — Brutalist precision, pure power, black + 1 color
+  ================================================================ */
+  .p13 {
+    background: #ffffff;
+    color: #000000;
+    font-family: 'Syne', sans-serif;
+    border: 3px solid #000;
+  }
+  .p13 .mini-nav-logo { color: #000; font-size: 11px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
+  .p13 .mini-title { font-size: 22px; font-weight: 800; color: #000; letter-spacing: -0.04em; text-transform: uppercase; line-height: 0.95; }
+  .p13 .mini-subtitle { color: #888; font-family: 'Inter', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .p13 .mini-cell { background: #f0f0f0; color: #aaa; border-radius: 2px; border: 1px solid #e0e0e0; }
+  .p13 .mini-cell.c4 { background: #000; color: #fff; border-color: #000; }
+  .p13 .mini-cell.c3 { background: #e0e0e0; color: #555; }
+  .p13 .mini-cell.c2 { background: #f8f8f8; color: #ccc; }
+  .p13 .mini-avatar { background: #000; border-radius: 0; }
+  .p13 .mini-badge { background: #000; color: #fff; border-radius: 2px; font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .p13 .mini-bar { background: #000; border-radius: 0; }
+  .p13 .mini-bar-bg { background: #e0e0e0; border-radius: 0; }
+  .p13 .mini-divider { background: #000; opacity: 1 !important; }
+  .p13 .mini-stat { color: #000; font-weight: 800; font-size: 22px; }
+
+  /* ================================================================
+     14. OCEAN DEPTH — Gradient navy to deep sea, fluid authority
+  ================================================================ */
+  .p14 {
+    background: linear-gradient(160deg, #0a1628 0%, #061020 50%, #040c18 100%);
+    color: #b8cce8;
+    font-family: 'DM Sans', sans-serif;
+    border: 1px solid #0f2040;
+    position: relative;
+    overflow: hidden;
+  }
+  .p14::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 80% 20%, #1d4ed810 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, #0ea5e910 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .p14 .mini-nav-logo { color: #60a5fa; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; }
+  .p14 .mini-title { font-weight: 700; color: #e0ecf8; font-size: 17px; }
+  .p14 .mini-subtitle { color: #1e3a5a; }
+  .p14 .mini-cell { background: rgba(255,255,255,0.04); color: #1e3a5a; border: 1px solid rgba(255,255,255,0.06); }
+  .p14 .mini-cell.c4 { background: linear-gradient(135deg, #1d4ed8, #2563eb); color: #bfdbfe; border-color: rgba(37,99,235,0.5); }
+  .p14 .mini-cell.c3 { background: rgba(37,99,235,0.12); color: #60a5fa; border-color: rgba(37,99,235,0.2); }
+  .p14 .mini-cell.c2 { background: rgba(255,255,255,0.02); color: #0f2040; }
+  .p14 .mini-avatar { background: rgba(96,165,250,0.15); border: 1px solid rgba(96,165,250,0.25); }
+  .p14 .mini-badge { background: rgba(37,99,235,0.2); color: #93c5fd; border: 1px solid rgba(37,99,235,0.3); }
+  .p14 .mini-bar { background: linear-gradient(90deg, #1d4ed8, #60a5fa); }
+  .p14 .mini-bar-bg { background: rgba(255,255,255,0.06); }
+  .p14 .mini-divider { background: #fff; }
+  .p14 .mini-stat { color: #60a5fa; }
+
+  /* ================================================================
+     15. EMBER — Warm dark, amber-red embers on charcoal
+  ================================================================ */
+  .p15 {
+    background: #120c08;
+    color: #e8cca0;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #1e1408;
+  }
+  .p15 .mini-nav-logo { color: #e07030; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .p15 .mini-title { font-family: 'DM Serif Display', serif; font-weight: 400; color: #f0d8b0; font-size: 19px; font-style: italic; }
+  .p15 .mini-subtitle { color: #4a2a10; }
+  .p15 .mini-cell { background: #1a1008; color: #2e1a08; }
+  .p15 .mini-cell.c4 { background: linear-gradient(135deg, #d05018, #a03010); color: #fce8d0; }
+  .p15 .mini-cell.c3 { background: #241808; color: #e07030; border: 1px solid #301e0a; }
+  .p15 .mini-cell.c2 { background: #0e0a06; color: #201208; }
+  .p15 .mini-avatar { background: rgba(224,112,48,0.15); border: 1px solid rgba(224,112,48,0.2); }
+  .p15 .mini-badge { background: rgba(224,112,48,0.15); color: #e07030; border: 1px solid rgba(224,112,48,0.25); }
+  .p15 .mini-bar { background: linear-gradient(90deg, #d05018, #f0a050); }
+  .p15 .mini-bar-bg { background: #1a1008; }
+  .p15 .mini-divider { background: #fff; }
+  .p15 .mini-stat { color: #e07030; }
+
+  /* ================================================================
+     16. SILVER GRADE — Light, silver-blue, clinical precision
+  ================================================================ */
+  .p16 {
+    background: #f4f6f8;
+    color: #1a2332;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #dde3ea;
+  }
+  .p16 .mini-nav-logo { color: #4a6080; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+  .p16 .mini-title { font-weight: 700; color: #1a2332; font-size: 16px; }
+  .p16 .mini-subtitle { color: #8a9ab0; }
+  .p16 .mini-cell { background: #e8eef4; color: #8a9ab0; }
+  .p16 .mini-cell.c4 { background: linear-gradient(135deg, #1a3a5c, #0f2840); color: #b0d0f0; }
+  .p16 .mini-cell.c3 { background: #d0dce8; color: #3a5070; border: 1px solid #c0ccd8; }
+  .p16 .mini-cell.c2 { background: #f0f4f8; color: #b0c0d0; }
+  .p16 .mini-avatar { background: #d8e4f0; border: 1px solid #c0ccd8; }
+  .p16 .mini-badge { background: #1a3a5c; color: #b0d0f0; }
+  .p16 .mini-bar { background: linear-gradient(90deg, #1a3a5c, #4a7ab0); }
+  .p16 .mini-bar-bg { background: #d8e4f0; }
+  .p16 .mini-divider { background: #000; }
+  .p16 .mini-stat { color: #1a3a5c; }
+
+  /* ================================================================
+     17. SMOKE & PAPER — Neutral gray, warm off-white, typographic
+  ================================================================ */
+  .p17 {
+    background: #fafafa;
+    color: #111;
+    font-family: 'Instrument Serif', serif;
+    border: 1px solid #e8e8e8;
+  }
+  .p17 .mini-nav-logo { color: #555; font-size: 11px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+  .p17 .mini-title { font-size: 21px; font-weight: 400; color: #111; font-style: italic; line-height: 1.1; }
+  .p17 .mini-subtitle { color: #bbb; font-family: 'Inter', sans-serif; font-size: 9px; }
+  .p17 .mini-cell { background: #f0f0f0; color: #bbb; }
+  .p17 .mini-cell.c4 { background: #111; color: #fff; }
+  .p17 .mini-cell.c3 { background: #e0e0e0; color: #555; border: 1px solid #d0d0d0; }
+  .p17 .mini-cell.c2 { background: #f8f8f8; color: #ddd; }
+  .p17 .mini-avatar { background: #e0e0e0; }
+  .p17 .mini-badge { background: #111; color: #fff; font-family: 'Inter', sans-serif; font-size: 8px; }
+  .p17 .mini-bar { background: #111; }
+  .p17 .mini-bar-bg { background: #e8e8e8; }
+  .p17 .mini-divider { background: #000; opacity: 0.07 !important; }
+  .p17 .mini-stat { color: #111; font-family: 'Inter', sans-serif; font-weight: 800; }
+
+  /* ================================================================
+     18. DUSK — Purple-blue twilight, soft glow, premium modern
+  ================================================================ */
+  .p18 {
+    background: linear-gradient(150deg, #0e0a1a 0%, #0a0e1e 100%);
+    color: #c0b8e0;
+    font-family: 'DM Sans', sans-serif;
+    border: 1px solid #1a1530;
+    position: relative;
+  }
+  .p18::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 160px; height: 160px;
+    background: radial-gradient(circle, #6366f118 0%, transparent 70%);
+  }
+  .p18::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; left: 40px;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, #8b5cf618 0%, transparent 70%);
+  }
+  .p18 .mini-nav-logo { color: #818cf8; font-size: 12px; font-weight: 600; letter-spacing: 0.03em; }
+  .p18 .mini-title { font-weight: 700; color: #e0dcf4; font-size: 17px; }
+  .p18 .mini-subtitle { color: #2e2850; }
+  .p18 .mini-cell { background: rgba(255,255,255,0.04); color: #2e2850; border: 1px solid rgba(255,255,255,0.06); }
+  .p18 .mini-cell.c4 { background: linear-gradient(135deg, #6366f1, #4f46e5); color: #e0e7ff; border-color: rgba(99,102,241,0.5); }
+  .p18 .mini-cell.c3 { background: rgba(99,102,241,0.15); color: #818cf8; border-color: rgba(99,102,241,0.2); }
+  .p18 .mini-cell.c2 { background: rgba(255,255,255,0.02); color: #141028; }
+  .p18 .mini-avatar { background: rgba(129,140,248,0.15); border: 1px solid rgba(129,140,248,0.2); }
+  .p18 .mini-badge { background: rgba(99,102,241,0.2); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.3); }
+  .p18 .mini-bar { background: linear-gradient(90deg, #6366f1, #a5b4fc); }
+  .p18 .mini-bar-bg { background: rgba(255,255,255,0.05); }
+  .p18 .mini-divider { background: #fff; }
+  .p18 .mini-stat { color: #a5b4fc; }
+
+  /* ================================================================
+     19. QUARTZ — Bone white, barely-there gray, invisible elegance
+  ================================================================ */
+  .p19 {
+    background: #fdfcfb;
+    color: #1c1917;
+    font-family: 'DM Sans', sans-serif;
+    border: 1px solid #f0ece8;
+  }
+  .p19 .mini-nav-logo { color: #78716c; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; }
+  .p19 .mini-title { font-family: 'DM Serif Display', serif; font-weight: 400; color: #1c1917; font-size: 20px; }
+  .p19 .mini-subtitle { color: #d4cfc8; font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'Inter', sans-serif; }
+  .p19 .mini-cell { background: #f5f2ee; color: #d4cfc8; }
+  .p19 .mini-cell.c4 { background: #1c1917; color: #fdfcfb; }
+  .p19 .mini-cell.c3 { background: #ece7e0; color: #78716c; border: 1px solid #e0dbd4; }
+  .p19 .mini-cell.c2 { background: #f9f6f2; color: #e0dbd4; }
+  .p19 .mini-avatar { background: #ece7e0; border: 1px solid #e0dbd4; }
+  .p19 .mini-badge { background: #f0ece8; color: #78716c; border: 1px solid #e4dfd8; }
+  .p19 .mini-bar { background: #1c1917; }
+  .p19 .mini-bar-bg { background: #ece7e0; }
+  .p19 .mini-divider { background: #000; opacity: 0.05 !important; }
+  .p19 .mini-stat { color: #1c1917; font-family: 'Inter', sans-serif; font-weight: 800; }
+
+  /* ================================================================
+     20. PLATINUM — Silver-white, metallic, ultra-premium
+  ================================================================ */
+  .p20 {
+    background: linear-gradient(145deg, #f8f8f8 0%, #eeeeee 100%);
+    color: #1a1a1a;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #e0e0e0;
+    position: relative;
+  }
+  .p20::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+  }
+  .p20 .mini-nav-logo { color: #888; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+  .p20 .mini-title { font-weight: 700; color: #111; font-size: 16px; letter-spacing: -0.02em; }
+  .p20 .mini-subtitle { color: #aaa; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .p20 .mini-cell {
+    background: linear-gradient(145deg, #ffffff, #e8e8e8);
+    color: #aaa;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.08), -1px -1px 2px rgba(255,255,255,0.9);
+  }
+  .p20 .mini-cell.c4 {
+    background: linear-gradient(145deg, #2a2a2a, #111);
+    color: #ddd;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.3), -1px -1px 2px rgba(255,255,255,0.05);
+  }
+  .p20 .mini-cell.c3 {
+    background: linear-gradient(145deg, #f0f0f0, #d8d8d8);
+    color: #555;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.06), -1px -1px 2px rgba(255,255,255,0.8);
+  }
+  .p20 .mini-cell.c2 {
+    background: linear-gradient(145deg, #fafafa, #eeeeee);
+    color: #ccc;
+  }
+  .p20 .mini-avatar {
+    background: linear-gradient(145deg, #f0f0f0, #d8d8d8);
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1), -1px -1px 2px rgba(255,255,255,0.8);
+  }
+  .p20 .mini-badge {
+    background: linear-gradient(145deg, #2a2a2a, #111);
+    color: #ddd;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
+  .p20 .mini-bar { background: linear-gradient(90deg, #333, #666); }
+  .p20 .mini-bar-bg { background: #e0e0e0; }
+  .p20 .mini-divider { background: #000; opacity: 0.06 !important; }
+  .p20 .mini-stat { color: #1a1a1a; }
+
+  /* ============================================================
+     CARD FOOTER
+  ============================================================ */
+  .card-footer {
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-name {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .card-desc {
+    font-size: 10px;
+    opacity: 0.45;
+    margin-top: 2px;
+    letter-spacing: 0.02em;
+  }
+  .card-select-btn {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .card-select-btn:hover {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border-color: rgba(255,255,255,0.3);
+  }
+
+  /* Dark card footers get white text, light ones get dark */
+  .light-footer .card-name { color: #111; }
+  .light-footer .card-desc { color: #666; }
+  .light-footer .card-select-btn {
+    border-color: rgba(0,0,0,0.12);
+    background: rgba(0,0,0,0.04);
+    color: rgba(0,0,0,0.4);
+  }
+  .light-footer .card-select-btn:hover {
+    background: rgba(0,0,0,0.08);
+    color: #000;
+    border-color: rgba(0,0,0,0.2);
+  }
+
+  /* ============================================================
+     SELECTED STATE
+  ============================================================ */
+  .aesthetic-card.selected {
+    box-shadow: 0 0 0 3px #4ade80, 0 24px 48px rgba(0,0,0,0.5);
+    transform: translateY(-4px);
+  }
+  .aesthetic-card.selected .card-label::before {
+    content: '✓ ';
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Aesthetic Directions</h1>
+  <p>SBG Gradebook — 20 Premium Approaches · Click to select</p>
+</div>
+
+<div class="grid">
+
+  <!-- 01 OBSIDIAN GOLD -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">01</span>
+    <span class="card-label">Dark</span>
+    <div class="preview p01">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p01"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar"></div>
+          <span class="mini-name">Emma Chen</span>
+          <span class="mini-badge p01">Proficient</span>
+          <div style="flex:1">
+            <div class="mini-bar-bg p01" style="height:3px;border-radius:2px;overflow:hidden;flex:1;"><div class="mini-bar p01" style="width:82%;height:100%;"></div></div>
+          </div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar"></div>
+          <span class="mini-name">Marcus Rivera</span>
+          <span class="mini-badge p01">Developing</span>
+          <div style="flex:1">
+            <div class="mini-bar-bg p01" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p01" style="width:55%;height:100%;"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p01">4</div>
+        <div class="mini-cell c3 p01">3</div>
+        <div class="mini-cell c3 p01">3</div>
+        <div class="mini-cell c2 p01">2</div>
+      </div>
+    </div>
+    <div class="card-footer" style="background:#0d0d0d;border-top:1px solid #1a1a1a;">
+      <div><div class="card-name">Obsidian Gold</div><div class="card-desc">Deep luxury · Serif elegance · Gold confidence</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 02 ARCTIC AUTHORITY -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">02</span>
+    <span class="card-label">Light</span>
+    <div class="preview p02">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p02"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p02"></div>
+          <span class="mini-name">Emma Chen</span>
+          <span class="mini-badge p02">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p02" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p02" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p02"></div>
+          <span class="mini-name">Marcus Rivera</span>
+          <span class="mini-badge p02" style="background:#f1f5f9;color:#64748b;border:1px solid #e2e8f0;">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p02" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p02" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p02">4</div>
+        <div class="mini-cell c3 p02">3</div>
+        <div class="mini-cell c3 p02">3</div>
+        <div class="mini-cell c2 p02">2</div>
+      </div>
+    </div>
+    <div class="card-footer light-footer" style="background:#fff;border-top:1px solid #e2e8f0;">
+      <div><div class="card-name">Arctic Authority</div><div class="card-desc">Surgical white · Navy depth · Institutional trust</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 03 SAPPHIRE TRUST -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">03</span>
+    <span class="card-label">Dark</span>
+    <div class="preview p03">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p03"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p03"></div>
+          <span class="mini-name">Emma Chen</span>
+          <span class="mini-badge p03">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p03" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p03" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p03"></div>
+          <span class="mini-name">Marcus Rivera</span>
+          <span class="mini-badge p03">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p03" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p03" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p03">4</div>
+        <div class="mini-cell c3 p03">3</div>
+        <div class="mini-cell c3 p03">3</div>
+        <div class="mini-cell c2 p03">2</div>
+      </div>
+    </div>
+    <div class="card-footer" style="background:#0a1628;border-top:1px solid #0f2040;">
+      <div><div class="card-name">Sapphire Trust</div><div class="card-desc">Cobalt authority · Professional depth · Badge blue</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 04 WARM IVORY -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">04</span>
+    <span class="card-label">Light</span>
+    <div class="preview p04">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p04"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p04"></div>
+          <span class="mini-name" style="font-family:'Playfair Display',serif;font-style:italic;">Emma Chen</span>
+          <span class="mini-badge p04">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p04" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p04" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p04"></div>
+          <span class="mini-name" style="font-family:'Playfair Display',serif;font-style:italic;">Marcus Rivera</span>
+          <span class="mini-badge p04" style="background:#f0e8d8;color:#9a8070;border:1px solid #e0d8c8;">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p04" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p04" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p04">4</div>
+        <div class="mini-cell c3 p04">3</div>
+        <div class="mini-cell c3 p04">3</div>
+        <div class="mini-cell c2 p04">2</div>
+      </div>
+    </div>
+    <div class="card-footer light-footer" style="background:#faf7f0;border-top:1px solid #e8dfd0;">
+      <div><div class="card-name">Warm Ivory</div><div class="card-desc">Old money · Serif elegance · Cream confidence</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 05 SLATE GLASS -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">05</span>
+    <span class="card-label">Dark</span>
+    <div class="preview p05">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p05"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p05"></div>
+          <span class="mini-name">Emma Chen</span>
+          <span class="mini-badge p05">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p05" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p05" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p05"></div>
+          <span class="mini-name">Marcus Rivera</span>
+          <span class="mini-badge p05">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p05" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p05" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p05">4</div>
+        <div class="mini-cell c3 p05">3</div>
+        <div class="mini-cell c3 p05">3</div>
+        <div class="mini-cell c2 p05">2</div>
+      </div>
+    </div>
+    <div class="card-footer" style="background:#0f172a;border-top:1px solid #1e293b;">
+      <div><div class="card-name">Slate Glass</div><div class="card-desc">Frosted depth · Modern premium · Subtle glow</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 06 EDITORIAL BLACK -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">06</span>
+    <span class="card-label">Dark</span>
+    <div class="preview p06">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p06"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p06"></div>
+          <span class="mini-name" style="font-family:'DM Serif Display',serif;font-style:italic;">Emma Chen</span>
+          <span class="mini-badge p06">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p06" style="height:3px;border-radius:0;overflow:hidden;"><div class="mini-bar p06" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p06"></div>
+          <span class="mini-name" style="font-family:'DM Serif Display',serif;font-style:italic;">Marcus Rivera</span>
+          <span class="mini-badge p06" style="background:#111;color:#666;border:1px solid #222;">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p06" style="height:3px;border-radius:0;overflow:hidden;"><div class="mini-bar p06" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p06">4</div>
+        <div class="mini-cell c3 p06">3</div>
+        <div class="mini-cell c3 p06">3</div>
+        <div class="mini-cell c2 p06">2</div>
+      </div>
+    </div>
+    <div class="card-footer" style="background:#000;border-top:1px solid #111;">
+      <div><div class="card-name">Editorial Black</div><div class="card-desc">Fashion authority · Serif italic · Pure black</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 07 FOREST AUTHORITY -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">07</span>
+    <span class="card-label">Dark</span>
+    <div class="preview p07">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p07"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p07"></div>
+          <span class="mini-name">Emma Chen</span>
+          <span class="mini-badge p07">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p07" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p07" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p07"></div>
+          <span class="mini-name">Marcus Rivera</span>
+          <span class="mini-badge p07">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p07" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p07" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p07">4</div>
+        <div class="mini-cell c3 p07">3</div>
+        <div class="mini-cell c3 p07">3</div>
+        <div class="mini-cell c2 p07">2</div>
+      </div>
+    </div>
+    <div class="card-footer" style="background:#0d1a0e;border-top:1px solid #162018;">
+      <div><div class="card-name">Forest Authority</div><div class="card-desc">Evergreen depth · Executive premium · Growth</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 08 CHALK & INK -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">08</span>
+    <span class="card-label">Light</span>
+    <div class="preview p08">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p08"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p08"></div>
+          <span class="mini-name">Emma Chen</span>
+          <span class="mini-badge p08">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p08" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p08" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p08"></div>
+          <span class="mini-name">Marcus Rivera</span>
+          <span class="mini-badge p08" style="background:#e8e0d0;color:#9a8070;border:1px solid #d8d0c0;">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p08" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p08" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p08">4</div>
+        <div class="mini-cell c3 p08">3</div>
+        <div class="mini-cell c3 p08">3</div>
+        <div class="mini-cell c2 p08">2</div>
+      </div>
+    </div>
+    <div class="card-footer light-footer" style="background:#f4f0e8;border-top:1px solid #e0d8c8;">
+      <div><div class="card-name">Chalk & Ink</div><div class="card-desc">Tactile warm · Space Grotesk · Bold confidence</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 09 ROYAL MIDNIGHT -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">09</span>
+    <span class="card-label">Dark</span>
+    <div class="preview p09">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p09"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p09"></div>
+          <span class="mini-name">Emma Chen</span>
+          <span class="mini-badge p09">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p09" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p09" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p09"></div>
+          <span class="mini-name">Marcus Rivera</span>
+          <span class="mini-badge p09">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p09" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p09" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p09">4</div>
+        <div class="mini-cell c3 p09">3</div>
+        <div class="mini-cell c3 p09">3</div>
+        <div class="mini-cell c2 p09">2</div>
+      </div>
+    </div>
+    <div class="card-footer" style="background:#0a0a1a;border-top:1px solid #14143a;">
+      <div><div class="card-name">Royal Midnight</div><div class="card-desc">Sovereign purple · Soft glow · Exclusive depth</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 10 COPPER & CONCRETE -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">10</span>
+    <span class="card-label">Dark</span>
+    <div class="preview p10">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p10"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p10"></div>
+          <span class="mini-name">Emma Chen</span>
+          <span class="mini-badge p10">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p10" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p10" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p10"></div>
+          <span class="mini-name">Marcus Rivera</span>
+          <span class="mini-badge p10">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p10" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p10" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p10">4</div>
+        <div class="mini-cell c3 p10">3</div>
+        <div class="mini-cell c3 p10">3</div>
+        <div class="mini-cell c2 p10">2</div>
+      </div>
+    </div>
+    <div class="card-footer" style="background:#1a1814;border-top:1px solid #282420;">
+      <div><div class="card-name">Copper & Concrete</div><div class="card-desc">Industrial refined · Warm metal · Tactile warmth</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 11 CLOUD SUMMIT -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">11</span>
+    <span class="card-label">Light</span>
+    <div class="preview p11">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p11"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p11"></div>
+          <span class="mini-name">Emma Chen</span>
+          <span class="mini-badge p11">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p11" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p11" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p11"></div>
+          <span class="mini-name">Marcus Rivera</span>
+          <span class="mini-badge p11">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p11" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p11" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p11">4</div>
+        <div class="mini-cell c3 p11">3</div>
+        <div class="mini-cell c3 p11">3</div>
+        <div class="mini-cell c2 p11">2</div>
+      </div>
+    </div>
+    <div class="card-footer light-footer" style="background:#f8fafc;border-top:1px solid #e2e8f0;">
+      <div><div class="card-name">Cloud Summit</div><div class="card-desc">Surgical clarity · Elevation depth · Pure white</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 12 TEAL AUTHORITY -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">12</span>
+    <span class="card-label">Dark</span>
+    <div class="preview p12">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p12"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p12"></div>
+          <span class="mini-name">Emma Chen</span>
+          <span class="mini-badge p12">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p12" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p12" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p12"></div>
+          <span class="mini-name">Marcus Rivera</span>
+          <span class="mini-badge p12">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p12" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p12" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p12">4</div>
+        <div class="mini-cell c3 p12">3</div>
+        <div class="mini-cell c3 p12">3</div>
+        <div class="mini-cell c2 p12">2</div>
+      </div>
+    </div>
+    <div class="card-footer" style="background:#061a1a;border-top:1px solid #0a2828;">
+      <div><div class="card-name">Teal Authority</div><div class="card-desc">Deep teal · Institutional cool · Medical trust</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 13 MONUMENT -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">13</span>
+    <span class="card-label">Light</span>
+    <div class="preview p13">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links" style="color:#000;opacity:0.3;"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">CLASS<br>OVERVIEW</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p13" style="opacity:1;height:2px;"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p13"></div>
+          <span class="mini-name" style="font-family:'Syne',sans-serif;font-weight:700;text-transform:uppercase;font-size:9px;letter-spacing:0.08em;">Emma Chen</span>
+          <span class="mini-badge p13">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p13" style="height:3px;border-radius:0;overflow:hidden;"><div class="mini-bar p13" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p13"></div>
+          <span class="mini-name" style="font-family:'Syne',sans-serif;font-weight:700;text-transform:uppercase;font-size:9px;letter-spacing:0.08em;">Marcus Rivera</span>
+          <span class="mini-badge p13" style="background:#eee;color:#666;border:1px solid #ddd;">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p13" style="height:3px;border-radius:0;overflow:hidden;"><div class="mini-bar p13" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p13">4</div>
+        <div class="mini-cell c3 p13">3</div>
+        <div class="mini-cell c3 p13">3</div>
+        <div class="mini-cell c2 p13">2</div>
+      </div>
+    </div>
+    <div class="card-footer light-footer" style="background:#fff;border-top:3px solid #000;">
+      <div><div class="card-name">Monument</div><div class="card-desc">Brutalist bold · Syne uppercase · Pure structure</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 14 OCEAN DEPTH -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">14</span>
+    <span class="card-label">Dark</span>
+    <div class="preview p14">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p14"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p14"></div>
+          <span class="mini-name">Emma Chen</span>
+          <span class="mini-badge p14">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p14" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p14" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p14"></div>
+          <span class="mini-name">Marcus Rivera</span>
+          <span class="mini-badge p14">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p14" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p14" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p14">4</div>
+        <div class="mini-cell c3 p14">3</div>
+        <div class="mini-cell c3 p14">3</div>
+        <div class="mini-cell c2 p14">2</div>
+      </div>
+    </div>
+    <div class="card-footer" style="background:#040c18;border-top:1px solid #0f2040;">
+      <div><div class="card-name">Ocean Depth</div><div class="card-desc">Navy gradient · Fluid authority · Layered depth</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 15 EMBER -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">15</span>
+    <span class="card-label">Dark</span>
+    <div class="preview p15">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p15"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p15"></div>
+          <span class="mini-name" style="font-family:'DM Serif Display',serif;font-style:italic;">Emma Chen</span>
+          <span class="mini-badge p15">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p15" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p15" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p15"></div>
+          <span class="mini-name" style="font-family:'DM Serif Display',serif;font-style:italic;">Marcus Rivera</span>
+          <span class="mini-badge p15">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p15" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p15" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p15">4</div>
+        <div class="mini-cell c3 p15">3</div>
+        <div class="mini-cell c3 p15">3</div>
+        <div class="mini-cell c2 p15">2</div>
+      </div>
+    </div>
+    <div class="card-footer" style="background:#120c08;border-top:1px solid #1e1408;">
+      <div><div class="card-name">Ember</div><div class="card-desc">Warm dark · Amber fire · Serif warmth</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 16 SILVER GRADE -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">16</span>
+    <span class="card-label">Light</span>
+    <div class="preview p16">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p16"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p16"></div>
+          <span class="mini-name">Emma Chen</span>
+          <span class="mini-badge p16">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p16" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p16" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p16"></div>
+          <span class="mini-name">Marcus Rivera</span>
+          <span class="mini-badge p16" style="background:#e8eef4;color:#6a8aaa;border:1px solid #d0dce8;">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p16" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p16" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p16">4</div>
+        <div class="mini-cell c3 p16">3</div>
+        <div class="mini-cell c3 p16">3</div>
+        <div class="mini-cell c2 p16">2</div>
+      </div>
+    </div>
+    <div class="card-footer light-footer" style="background:#f4f6f8;border-top:1px solid #dde3ea;">
+      <div><div class="card-name">Silver Grade</div><div class="card-desc">Clinical silver · Navy depth · Precision trust</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 17 SMOKE & PAPER -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">17</span>
+    <span class="card-label">Light</span>
+    <div class="preview p17">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p17"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p17"></div>
+          <span class="mini-name" style="font-family:'Instrument Serif',serif;font-style:italic;">Emma Chen</span>
+          <span class="mini-badge p17">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p17" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p17" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p17"></div>
+          <span class="mini-name" style="font-family:'Instrument Serif',serif;font-style:italic;">Marcus Rivera</span>
+          <span class="mini-badge p17" style="background:#f0f0f0;color:#888;border:none;">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p17" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p17" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p17">4</div>
+        <div class="mini-cell c3 p17">3</div>
+        <div class="mini-cell c3 p17">3</div>
+        <div class="mini-cell c2 p17">2</div>
+      </div>
+    </div>
+    <div class="card-footer light-footer" style="background:#fafafa;border-top:1px solid #e8e8e8;">
+      <div><div class="card-name">Smoke & Paper</div><div class="card-desc">Typographic grace · Instrument Serif · Pure neutral</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 18 DUSK -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">18</span>
+    <span class="card-label">Dark</span>
+    <div class="preview p18">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p18"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p18"></div>
+          <span class="mini-name">Emma Chen</span>
+          <span class="mini-badge p18">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p18" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p18" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p18"></div>
+          <span class="mini-name">Marcus Rivera</span>
+          <span class="mini-badge p18">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p18" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p18" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p18">4</div>
+        <div class="mini-cell c3 p18">3</div>
+        <div class="mini-cell c3 p18">3</div>
+        <div class="mini-cell c2 p18">2</div>
+      </div>
+    </div>
+    <div class="card-footer" style="background:#0a0e1e;border-top:1px solid #1a1530;">
+      <div><div class="card-name">Dusk</div><div class="card-desc">Twilight purple · Soft ambient glow · Modern depth</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 19 QUARTZ -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">19</span>
+    <span class="card-label">Light</span>
+    <div class="preview p19">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p19"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p19"></div>
+          <span class="mini-name" style="font-family:'DM Serif Display',serif;">Emma Chen</span>
+          <span class="mini-badge p19">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p19" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p19" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p19"></div>
+          <span class="mini-name" style="font-family:'DM Serif Display',serif;">Marcus Rivera</span>
+          <span class="mini-badge p19">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p19" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p19" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p19">4</div>
+        <div class="mini-cell c3 p19">3</div>
+        <div class="mini-cell c3 p19">3</div>
+        <div class="mini-cell c2 p19">2</div>
+      </div>
+    </div>
+    <div class="card-footer light-footer" style="background:#fdfcfb;border-top:1px solid #f0ece8;">
+      <div><div class="card-name">Quartz</div><div class="card-desc">Bone white · Invisible elegance · Stone serif</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+  <!-- 20 PLATINUM -->
+  <div class="aesthetic-card" onclick="select(this)">
+    <span class="card-number">20</span>
+    <span class="card-label">Light</span>
+    <div class="preview p20">
+      <div class="mini-nav">
+        <span class="mini-nav-logo">SBG</span>
+        <div class="mini-nav-links"><span>Classes</span><span>Export</span></div>
+      </div>
+      <div>
+        <div class="mini-title">Class Overview</div>
+        <div class="mini-subtitle">Mastery Progress</div>
+      </div>
+      <div class="mini-stats">
+        <div><div class="mini-stat">24</div><div class="mini-stat-label">Students</div></div>
+        <div><div class="mini-stat">8</div><div class="mini-stat-label">Standards</div></div>
+        <div><div class="mini-stat">73%</div><div class="mini-stat-label">Proficient</div></div>
+      </div>
+      <div class="mini-divider p20"></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+        <div class="mini-row">
+          <div class="mini-avatar p20"></div>
+          <span class="mini-name">Emma Chen</span>
+          <span class="mini-badge p20">Proficient</span>
+          <div style="flex:1"><div class="mini-bar-bg p20" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p20" style="width:82%;height:100%;"></div></div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-avatar p20"></div>
+          <span class="mini-name">Marcus Rivera</span>
+          <span class="mini-badge p20" style="background:linear-gradient(145deg,#f0f0f0,#d8d8d8);color:#666;box-shadow:1px 1px 3px rgba(0,0,0,0.06),-1px -1px 2px rgba(255,255,255,0.8);">Developing</span>
+          <div style="flex:1"><div class="mini-bar-bg p20" style="height:3px;border-radius:2px;overflow:hidden;"><div class="mini-bar p20" style="width:55%;height:100%;"></div></div></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-cell c4 p20">4</div>
+        <div class="mini-cell c3 p20">3</div>
+        <div class="mini-cell c3 p20">3</div>
+        <div class="mini-cell c2 p20">2</div>
+      </div>
+    </div>
+    <div class="card-footer light-footer" style="background:#eeeeee;border-top:1px solid #e0e0e0;">
+      <div><div class="card-name">Platinum</div><div class="card-desc">Metallic neumorphic · Silver grade · Ultra premium</div></div>
+      <button class="card-select-btn">Select</button>
+    </div>
+  </div>
+
+</div>
+
+<div style="text-align:center;margin-top:64px;padding-bottom:64px;">
+  <p id="selection-display" style="color:#444;font-size:14px;letter-spacing:0.04em;">Click any aesthetic to select it</p>
+</div>
+
+<script>
+  let selected = null;
+
+  function select(card) {
+    if (selected) selected.classList.remove('selected');
+    card.classList.add('selected');
+    selected = card;
+
+    const name = card.querySelector('.card-name').textContent;
+    const num = card.querySelector('.card-number').textContent;
+    document.getElementById('selection-display').textContent =
+      `Selected: ${num} — ${name}. Tell Claude which you want built.`;
+  }
+</script>
+
+</body>
+</html>

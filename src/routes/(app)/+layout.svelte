@@ -2,13 +2,15 @@
 	let { children } = $props();
 </script>
 
-<div class="min-h-screen bg-gray-50">
-	<nav class="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between">
-		<a href="/dashboard" class="font-semibold text-gray-900 text-sm">SBG Gradebook</a>
-		<div class="flex items-center gap-4">
-			<a href="/account" class="text-sm text-gray-500 hover:text-gray-900">Account</a>
+<div class="min-h-screen bg-[#f4f6f8]">
+	<nav class="bg-white border-b border-[#dde3ea] px-6 py-3 flex items-center justify-between">
+		<a href="/dashboard" class="text-xs font-bold tracking-[0.14em] uppercase text-[#4a6080] hover:text-[#1a2332] transition-colors">
+			SBG Gradebook
+		</a>
+		<div class="flex items-center gap-5">
+			<a href="/account" class="text-sm text-[#8a9ab0] hover:text-[#1a2332] transition-colors">Account</a>
 			<form method="POST" action="/api/auth/signout">
-				<button class="text-sm text-gray-500 hover:text-gray-900">Sign out</button>
+				<button class="text-sm text-[#8a9ab0] hover:text-[#1a2332] transition-colors cursor-pointer">Sign out</button>
 			</form>
 		</div>
 	</nav>

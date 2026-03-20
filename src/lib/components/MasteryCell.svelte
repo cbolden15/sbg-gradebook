@@ -32,18 +32,18 @@
 
 {#if editing}
 	<td class="p-0 relative">
-		<div class="absolute z-10 top-0 left-0 bg-white border border-gray-300 rounded-lg shadow-lg p-1 flex gap-1">
+		<div class="absolute z-10 top-0 left-0 bg-white border border-[#dde3ea] rounded-lg shadow-md p-1 flex gap-1">
 			{#each [1, 2, 3, 4] as s}
 				<button
 					onclick={() => handleSelect(s)}
-					class="w-8 h-8 rounded text-sm font-bold {SCORE_COLORS[s]} border hover:opacity-80 transition-opacity"
+					class="w-8 h-8 rounded text-sm font-bold border {SCORE_COLORS[s]} hover:opacity-80 transition-opacity cursor-pointer"
 				>
 					{s}
 				</button>
 			{/each}
 			<button
 				onclick={() => (editing = false)}
-				class="w-8 h-8 rounded text-xs text-gray-400 border border-gray-200 hover:bg-gray-50"
+				class="w-8 h-8 rounded text-xs text-[#8a9ab0] border border-[#dde3ea] hover:bg-[#f0f4f8] cursor-pointer"
 			>✕</button>
 		</div>
 		<div class="w-12 h-10"></div>
@@ -51,7 +51,7 @@
 {:else}
 	<td
 		onclick={handleClick}
-		class="w-12 h-10 text-center text-sm font-semibold cursor-pointer border border-gray-100 transition-opacity {isPending
+		class="w-12 h-10 text-center text-sm font-semibold cursor-pointer border border-[#e8eef4] transition-opacity {isPending
 			? 'opacity-50'
 			: ''} {SCORE_COLORS[score ?? 'null']}"
 	>

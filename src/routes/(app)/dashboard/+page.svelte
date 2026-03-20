@@ -6,19 +6,19 @@
 </script>
 
 <div class="flex items-center justify-between mb-6">
-	<h1 class="text-xl font-bold text-gray-900">My Classes</h1>
+	<h1 class="text-lg font-bold text-[#1a2332] tracking-tight">My Classes</h1>
 	<a
 		href="/classes/new"
-		class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
+		class="px-4 py-2 bg-[#1a3a5c] text-white text-sm font-semibold rounded-lg hover:bg-[#0f2840] transition-colors cursor-pointer"
 	>
 		+ New Class
 	</a>
 </div>
 
 {#if data.classes.length === 0}
-	<div class="text-center py-16 bg-white rounded-xl border border-dashed border-gray-300">
-		<p class="text-gray-500 mb-3">No classes yet.</p>
-		<a href="/classes/new" class="text-blue-600 text-sm hover:underline">Create your first class →</a>
+	<div class="text-center py-16 bg-white rounded-xl border border-dashed border-[#c0ccd8]">
+		<p class="text-[#8a9ab0] text-sm mb-3">No classes yet.</p>
+		<a href="/classes/new" class="text-[#1a3a5c] text-sm font-medium hover:underline">Create your first class →</a>
 	</div>
 {:else}
 	<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
