@@ -5,7 +5,7 @@ import { createSupabaseServiceClient } from '$lib/supabase-server';
 import type { RequestHandler } from './$types';
 
 // Required for raw body access in Vercel
-export const config = { runtime: 'nodejs' };
+export const config = { runtime: 'nodejs22.x' };
 
 const stripe = new Stripe(STRIPE_SECRET_KEY);
 
